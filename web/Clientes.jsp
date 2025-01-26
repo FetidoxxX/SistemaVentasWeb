@@ -13,6 +13,5 @@
     </head>
     <body>
         <h1>Clientes!</h1>
-        <h2>esta pa maicol!</h2>
     </body>
 </html>
