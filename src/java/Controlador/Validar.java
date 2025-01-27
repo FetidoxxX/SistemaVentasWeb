@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class ControladorValidar extends HttpServlet {
+public class Validar extends HttpServlet {
 
     EmpleadoDAO edao = new EmpleadoDAO();
     Empleado em = new Empleado();
