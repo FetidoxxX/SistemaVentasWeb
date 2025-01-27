@@ -30,16 +30,16 @@
                             <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?accion=Producto" target="myFrame">Producto</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Producto" target="myFrame">Producto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?accion=Empleado" target="myFrame">Empleado</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?accion=Clientes" target="myFrame">Clientes</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Cliente" target="myFrame">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?accion=NuevaVenta" target="myFrame">Nueva Venta</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=NuevaVenta" target="myFrame">Nueva Venta</a>
                         </li>
                     </ul>
                 </div>
