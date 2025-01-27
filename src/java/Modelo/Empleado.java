@@ -4,6 +4,10 @@
  */
 package Modelo;
 
+/**
+ *
+ * @author USER
+ */
 public class Empleado {
     int id;
     String dni;

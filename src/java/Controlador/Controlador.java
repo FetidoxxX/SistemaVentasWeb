@@ -4,35 +4,24 @@
  */
 package Controlador;
 
-import config.GenerarSerie;
-//import config.Imprimir;
-import java.awt.Desktop;
-import java.io.File;
+/**
+ *
+ * @author USER
+ */
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import Modelo.*;
-import org.apache.tomcat.jakartaee.commons.lang3.builder.ToStringExclude;
-//import sendemail.SendEmailUsingGMailSMTP;
 
 public class Controlador extends HttpServlet {
     
     Empleado em = new Empleado();
     EmpleadoDAO edao = new EmpleadoDAO();
-    Cliente c = new Cliente();
-    ClienteDAO cdao = new ClienteDAO();
-    Producto p = new Producto();
-    ProductoDAO pdao = new ProductoDAO();
     int ide;
-    int idc;
-    int idp;
+    
     
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -46,9 +35,10 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
             switch (accion) {
                 case "Listar":
-                    List lista = edao.listar();  
-                    request.setAttribute("empleados", lista);
-                    break;
+                     List<Empleado> lista = edao.listar();
+                     request.setAttribute("empleados", lista);
+                     request.getRequestDispatcher("Empleado.jsp").forward(request, response);
+                break;
                 case "Agregar":
                     String dni = request.getParameter("txtDni");
                     String nom = request.getParameter("txtNombres");

@@ -66,20 +66,20 @@
                                 </tr>
                             </thead>
                             <tbody> 
-                                <c:forEach var="em" items="${empleados}">
-                                    <tr>
-                                        <td>${em.getId()}</td>
-                                        <td>${em.getDni()}</td>
-                                        <td>${em.getNom()}</td>
-                                        <td>${em.getTel()}</td>
-                                        <td>${em.getEstado()}</td>
-                                        <td>${em.getUser()}</td>
-                                        <td>
-                                            <a class="btn btn-warning" href="Controlador?menu=Empleado&accion=Editar&id=${em.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="Controlador?menu=Empleado&accion=Delete&id=${em.getId()}">Eliminar</a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                            <c:forEach var="em" items="${empleados}">
+                                <tr>
+                                    <td>${em.id}</td>
+                                    <td>${em.dni}</td>
+                                    <td>${em.nom}</td>
+                                    <td>${em.tel}</td>
+                                    <td>${em.estado}</td>
+                                    <td>${em.user}</td>
+                                    <td>
+                                        <a class="btn btn-warning" href="Controlador?menu=Empleado&accion=Editar&id=${em.id}">Editar</a>
+                                        <a class="btn btn-danger" href="Controlador?menu=Empleado&accion=Delete&id=${em.id}">Eliminar</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
 
                             </tbody>
                         </table>

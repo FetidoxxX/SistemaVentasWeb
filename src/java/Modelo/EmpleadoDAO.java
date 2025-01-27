@@ -4,6 +4,10 @@
  */
 package Modelo;
 
+/**
+ *
+ * @author USER
+ */
 import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,10 +46,10 @@ public class EmpleadoDAO {
     
     //Operaciones CRUD
    
-    public List listar(){
-      String sql = "select * from empleado";  
-      List lista = new ArrayList<>();
-      try {
+    public List listar() {
+    String sql = "SELECT * FROM empleado";
+    List<Empleado> lista = new ArrayList<>();
+    try {
           con = cn.Conexion();
           ps = con.prepareStatement(sql);
           rs = ps.executeQuery();
