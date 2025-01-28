@@ -30,13 +30,13 @@
                             <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Producto" target="myFrame">Producto</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Producto&accion=Listar" target="myFrame">Producto</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Cliente" target="myFrame">Clientes</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Cliente&accion=Listar" target="myFrame">Clientes</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=NuevaVenta" target="myFrame">Nueva Venta</a>

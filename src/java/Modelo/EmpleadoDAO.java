@@ -26,7 +26,7 @@ public class EmpleadoDAO {
 
     public Empleado validar(String user, String dni) {
         Empleado em = new Empleado();
-        String sql = "SELECT * FROM empleado WHERE User=? AND Dni=?";
+        String sql = "select * from empleado WHERE User=? AND Dni=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -39,7 +39,7 @@ public class EmpleadoDAO {
                 em.setDni(rs.getString("Dni"));
                 em.setNom(rs.getString("Nombres"));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return em;
     }
