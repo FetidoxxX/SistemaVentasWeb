@@ -32,6 +32,7 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         }
@@ -190,12 +191,12 @@ public class Controlador extends HttpServlet {
                 case "BuscarCliente":
                     String dni = request.getParameter("codigocliente");
                     c.setDni(dni);
-                    Cliente cl=cdao.Buscar(dni);
-                    request.setAttribute("c", cl);
+                    c=cdao.Buscar(dni);
+                    request.setAttribute("c", c);
                     break;
                 default:
-                    throw new AssertionError();
             }
+            System.out.println("Redirecciona a Nuevaventa jsp");
             request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
         }
         

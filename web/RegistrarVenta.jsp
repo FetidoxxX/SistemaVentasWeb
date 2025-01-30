@@ -31,10 +31,10 @@
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
                                     <input type="text"  name="codigocliente" class="form-control" placeholder="Codigo">
-                                    <button type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-info">Buscar</button>
+                                    <button type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-light">Buscar</button>
                                 </div>                           
                                 <div class="col-sm-6">
-                                    <input type="text" name="nombrescliente"  placeholder="Datos Cliente" class="form-control">
+                                    <input type="text" name="nombrescliente"   placeholder="Datos Cliente" class="form-control">
                                 </div>                           
                             </div>
                             <!--DATOS DEL PRODUCTO-->
