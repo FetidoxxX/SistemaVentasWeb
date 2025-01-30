@@ -30,11 +30,11 @@
                             </div>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text"  name="codigocliente" class="form-control" placeholder="Codigo">
+                                    <input type="text"  name="codigocliente" value="${c.getDni()}" class="form-control" placeholder="Codigo">
                                     <button type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-light">Buscar</button>
                                 </div>                           
                                 <div class="col-sm-6">
-                                    <input type="text" name="nombrescliente"   placeholder="Datos Cliente" class="form-control">
+                                    <input type="text" name="nombrescliente"  value="${c.getNom()}" placeholder="Datos Cliente" class="form-control">
                                 </div>                           
                             </div>
                             <!--DATOS DEL PRODUCTO-->
@@ -43,22 +43,22 @@
                             </div>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text" name="codigoproducto"  class="form-control" placeholder="Codigo">
-                                    <button type="submit" name="accion" value="BuscarProducto" class="btn btn-outline-info">Buscar</button>
+                                    <input type="text" name="codigoProducto" value="${producto.getId()}" class="form-control" placeholder="Codigo">
+                                    <button type="submit" name="accion" value="BuscarProducto" class="btn btn-outline-info">BuscarProducto</button>
                                 </div>                           
                                 <div class="col-sm-6">
-                                    <input type="text" name="nomproducto"  placeholder="Datos Producto" class="form-control">
+                                    <input type="text" name="nomproducto" value="${producto.getNom()}" placeholder="Datos Producto" class="form-control">
                                 </div>  
                             </div>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text" name="precio"  class="form-control" placeholder="S/.0.00">                                
+                                    <input type="text" name="precio" value="${producto.getPre()}" class="form-control" placeholder="S/.0.00">                                
                                 </div>                           
                                 <div class="col-sm-3">
-                                    <input  type="number" name="cant" placeholder="" class="form-control">
+                                    <input  type="number" value="1" name="cant" placeholder="" class="form-control">
                                 </div>  
                                 <div class="col-sm-3">
-                                    <input type="text" name="stock" placeholder="Stock" class="form-control">
+                                    <input type="text" name="stock" value="${producto.getStock()}" placeholder="Stock" class="form-control">
                                 </div>  
                             </div>
                             <!--BOTON AGREGAR PRODUCTO AL REGISTRO-->
@@ -91,22 +91,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <c:forEach var="list" items="${lista}">
+
+                                    <tr>
+                                    
+                                            <td>${list.getItem()}</td>
+                                            <td>${list.getIdproducto()}</td>
+                                            <td>${list.getDescripcionP()}</td>
+                                            <td>${list.getPrecio()}</td>
+                                            <td>${list.getCantidad()}</td>
+                                            <td>${list.getSubtotal()}</td>
+                                            <td class="d-flex">
+                                                <a href="#" class="btn btn-warning"">Editar</a>
+                                                <a href="#" class="btn btn-danger" style=margin-left: 10px">Delete</a>
+                                            </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer">
-                        <div>
+                    <div class="card-footer d-flex">
+                        <div class="col-sm-6">
                             <input type="submit" name="accion" value="Generar Venta" class="btn btn-success">
                             <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
+                        </div>
+                        <div class="col-sm-3 ml-auto">
+                            <input type="text" value="${totalPagar}" name="txtTotal" class="form-control">
                         </div>
                     </div>
                 </div>

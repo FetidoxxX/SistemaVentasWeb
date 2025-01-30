@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import Modelo.*;
+import java.util.ArrayList;
 
 public class Controlador extends HttpServlet {
     
@@ -27,6 +28,15 @@ public class Controlador extends HttpServlet {
     int ide;
     int idc;
     int idp;
+    Venta v=new Venta();
+    List<Venta>lista=new ArrayList<>();
+    int item;
+    int cod;
+    String descripcion;
+    double precio;
+    int cant;
+    double subtotal;  
+    double totalPagar;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -194,7 +204,37 @@ public class Controlador extends HttpServlet {
                     c=cdao.Buscar(dni);
                     request.setAttribute("c", c);
                     break;
+                case "BuscarProducto":
+                    int id=Integer.parseInt(request.getParameter("codigoProducto"));
+                    p=pdao.listarId(id);
+                    request.setAttribute("producto",p);
+                    request.setAttribute("lista",lista);
+                    
+                    break;   
+                case "Agregar":
+                    totalPagar = 0.0;
+                    item = item+1;
+                    cod=p.getId();
+                    descripcion=request.getParameter("nomproducto");
+                    precio=Double.parseDouble(request.getParameter("precio"));
+                    cant=Integer.parseInt(request.getParameter("cant"));
+                    subtotal=precio*cant;
+                    v=new Venta();
+                    v.setItem(item);
+                    v.setId(cod);
+                    v.setDescripcionP(descripcion);
+                    v.setPrecio(precio);
+                    v.setCantidad(cant);
+                    v.setSubtotal(subtotal);
+                    lista.add(v);
+                    for (int i= 0; i<lista.size();i++){
+                            totalPagar=totalPagar+lista.get(i).getSubtotal();
+                    }
+                        request.setAttribute("totalPagar",totalPagar);
+                        request.setAttribute("lista",lista);
+                    break;
                 default:
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
             }
             System.out.println("Redirecciona a Nuevaventa jsp");
             request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);

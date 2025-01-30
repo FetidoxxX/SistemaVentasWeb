@@ -26,7 +26,7 @@ public class ClienteDAO {
 
     public Cliente Buscar(String dni) {
         Cliente c = new Cliente();
-        String sql = "select * fromcliente WHERE Dni="+dni;
+        String sql = "select * from cliente WHERE Dni="+dni;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -39,6 +39,7 @@ public class ClienteDAO {
                 c.setEs(rs.getString(5));
             }
         } catch (SQLException e) {
+            System.out.println("error al buscar Cliente: "+e.getMessage());
         }
         return c;
     }
