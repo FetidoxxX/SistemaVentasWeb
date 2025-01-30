@@ -36,7 +36,6 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         }
         if (menu.equals("Empleado")) {
-            request.getRequestDispatcher("Empleado.jsp").forward(request, response);
             switch (accion) {
                 case "Listar":
                     List lista = edao.listar();
