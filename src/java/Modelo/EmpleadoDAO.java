@@ -48,7 +48,7 @@ public class EmpleadoDAO {
    
     public List listar() {
     String sql = "SELECT * FROM empleado";
-    List<Empleado> lista = new ArrayList<>();
+    List lista = new ArrayList<>();
     try {
           con = cn.Conexion();
           ps = con.prepareStatement(sql);
@@ -64,6 +64,7 @@ public class EmpleadoDAO {
                 lista.add(em);
             }
       }catch (SQLException e) {
+          System.out.println("error al listar empleado: "+e.getMessage());
         }
       return lista;
     }
@@ -126,6 +127,7 @@ public class EmpleadoDAO {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("error al borrar empleado: "+e.getMessage());
         }
     }
     

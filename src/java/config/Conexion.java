@@ -6,6 +6,7 @@ package config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Conexion {
     Connection con;
@@ -17,7 +18,8 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             con = DriverManager.getConnection(url, user, pass);
-        } catch (Exception e) {
+            System.out.println("realizo conexion base de datos");
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
         }
         return con;

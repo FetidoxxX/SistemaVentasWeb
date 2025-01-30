@@ -62,6 +62,7 @@ public class ClienteDAO {
                 lista.add(cl);
             }
       }catch (SQLException e) {
+          System.out.println("error al listar cliente: "+e.getMessage());
         }
       return lista;
     }
@@ -77,6 +78,7 @@ public class ClienteDAO {
             ps.setString(4, cl.getEs());
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("error al insertar cliente: "+e.getMessage());
         }
         return r;
     }
@@ -95,6 +97,7 @@ public class ClienteDAO {
                 cli.setEs(rs.getString(5));
             }
         } catch (SQLException e) {
+            System.out.println("error en listarid cliente: "+e.getMessage());
         }
         return cli;
     }
@@ -111,6 +114,7 @@ public class ClienteDAO {
             ps.setInt(5, em.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("error al actualizar cliente: "+e.getMessage());
         }
         return r;
     }
@@ -122,6 +126,7 @@ public class ClienteDAO {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("error al borrar cliente: "+e.getMessage());
         }
     }
     

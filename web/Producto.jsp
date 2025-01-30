@@ -3,7 +3,7 @@
     Created on : 26/01/2025, 3:38:12 a. m.
     Author     : User
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="ControladorProducto?menu=Producto" method="POST">
+                        <form action="Controlador?menu=Producto" method="POST">
                             <div class="form-group">
                                 <label>Producto</label>
                                 <input type="text" value="${producto.getNom()}" name="txtDni" class="form-control">
@@ -71,8 +71,8 @@
                                         <td>${em.getStock()}</td>
                                         <td>${em.getEstado()}</td>                                        
                                         <td>
-                                            <a class="btn btn-warning" href="ControladorProducto?menu=Producto&accion=Editar&id=${em.getId()}">Editar</a>
-                                            <a class="btn btn-danger" href="ControladorProducto?menu=Producto&accion=Delete&id=${em.getId()}">Delete</a>
+                                            <a class="btn btn-warning" href="Controlador?menu=Producto&accion=Editar&id=${em.getId()}">Editar</a>
+                                            <a class="btn btn-danger" href="Controlador?menu=Producto&accion=Delete&id=${em.getId()}">Delete</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

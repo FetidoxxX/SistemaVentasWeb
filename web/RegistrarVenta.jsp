@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,8 +71,45 @@
                     </form>
                 </div>
             </div>
-            <div>
-                
+            <div class="col-sm-7">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex col-sm-5 ml-right">
+                            <label>Nro.Serie</label>
+                            <input type="text" name="NroSerie" class="form-control">
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nro</th>
+                                    <th>Codigo</th>
+                                    <th>Descripcion</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>subTotal</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div>
+                            <input type="submit" name="accion" value="Generar Venta" class="btn btn-success">
+                            <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 </html>

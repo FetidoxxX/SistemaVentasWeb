@@ -39,9 +39,8 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
             switch (accion) {
                 case "Listar":
-                    List<Empleado> lista = edao.listar();
+                    List lista = edao.listar();
                     request.setAttribute("empleados", lista);
-                    request.getRequestDispatcher("Empleado.jsp").forward(request, response);
                     break;
                 case "Agregar":
                     String dni = request.getParameter("txtDni");
@@ -86,6 +85,7 @@ public class Controlador extends HttpServlet {
                 default:
                     throw new AssertionError();
             }
+            System.out.println("Redirecciona a Empleado jsp");
              request.getRequestDispatcher("Empleado.jsp").forward(request, response);
         }
         
@@ -153,13 +153,13 @@ public class Controlador extends HttpServlet {
                     p.setStock(st);
                     p.setEstado(est);
                     pdao.agregar(p);
-                    request.getRequestDispatcher("ControladorProducto?menu=Producto&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     idp = Integer.parseInt(request.getParameter("id"));
                     Producto pr = pdao.listarId(idp);
                     request.setAttribute("producto", pr);
-                    request.getRequestDispatcher("ControladorProducto?menu=Producto&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
                     String dni1 = request.getParameter("txtDni");
@@ -172,20 +172,31 @@ public class Controlador extends HttpServlet {
                     p.setEstado(est1);
                     p.setId(idp);
                     pdao.actualizar(p);
-                    request.getRequestDispatcher("ControladorProducto?menu=Producto&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                 case "Delete":
                     idp = Integer.parseInt(request.getParameter("id"));
                     pdao.delete(idp);
-                    request.getRequestDispatcher("ControladorProducto?menu=Producto&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                 default:                    
                     throw new AssertionError();
             }
+            System.out.println("Redirecciona a produco jsp");
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
         }
         
         if (menu.equals("NuevaVenta")) {
+            switch (accion) {
+                case "BuscarCliente":
+                    String dni = request.getParameter("codigocliente");
+                    c.setDni(dni);
+                    Cliente cl=cdao.Buscar(dni);
+                    request.setAttribute("c", cl);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
             request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
         }
         
