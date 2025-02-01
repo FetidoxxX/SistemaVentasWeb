@@ -40,6 +40,7 @@ public class EmpleadoDAO {
                 em.setNom(rs.getString("Nombres"));
             }
         } catch (SQLException e) {
+            System.out.println("error al validar empleado: "+e.getMessage());
         }
         return em;
     }
@@ -81,6 +82,7 @@ public class EmpleadoDAO {
             ps.setString(5, em.getUser());
             ps.executeUpdate();
         } catch (SQLException e) {
+        System.out.println("error al agregar empleado: "+e.getMessage());
         }
         return r;
     }
@@ -99,7 +101,8 @@ public class EmpleadoDAO {
                 emp.setEstado(rs.getString(5));
                 emp.setUser(rs.getString(6));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("error al listarid empleado: "+e.getMessage());
         }
         return emp;
     }
@@ -117,6 +120,7 @@ public class EmpleadoDAO {
             ps.setInt(6, em.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("error al actualizar empleado: "+e.getMessage());
         }
         return r;
     }
