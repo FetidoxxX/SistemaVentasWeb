@@ -6,6 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    HttpSession misesion = request.getSession();
+    if(misesion.getAttribute("usuario")==null){
+    response.sendRedirect("index.jsp");
+    }else{
+    
+    
+    %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -71,3 +79,4 @@
         crossorigin="anonymous"></script>
     </body>
 </html>
+<% } %>

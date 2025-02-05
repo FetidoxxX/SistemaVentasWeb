@@ -14,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class Validar extends HttpServlet {
 
@@ -40,7 +41,9 @@ public class Validar extends HttpServlet {
             String pass=request.getParameter("txtpass");
             em=edao.validar(user, pass);
             if(em.getUser()!=null){
-                request.setAttribute("usuario", em);
+                //request.setAttribute("usuario", em);
+                HttpSession misesion=request.getSession();
+                misesion.setAttribute("usuario", em);
                 request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -51,6 +54,11 @@ public class Validar extends HttpServlet {
         }
     }
 
+       public void Salir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+           HttpSession misesion=request.getSession();
+           misesion.invalidate();
+           request.getRequestDispatcher("index.jsp").forward(request, response);
+       }
     @Override
     public String getServletInfo() {
         return "Short description";
