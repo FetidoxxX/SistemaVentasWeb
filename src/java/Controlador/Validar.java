@@ -33,26 +33,32 @@ public class Validar extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String accion=request.getParameter("accion");
-        if(accion.equalsIgnoreCase("Ingresar")){
-            String user=request.getParameter("txtuser");
-            String pass=request.getParameter("txtpass");
-            em=edao.validar(user, pass);
-            if(em.getUser()!=null){
-                //request.setAttribute("usuario", em);
-                HttpSession misesion=request.getSession();
-                misesion.setAttribute("usuario", em);
-                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
-            }else{
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-        }
-        else{
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    String accion = request.getParameter("accion");
+    
+    if (accion.equalsIgnoreCase("Ingresar")) {
+        String user = request.getParameter("txtuser");
+        String clave = Seguridad.miHash(request.getParameter("txtclave"));
+        
+        em = edao.validar(user, clave);
+        
+        if (em != null) { // Verifica si 'em' no es null antes de acceder a sus métodos
+            HttpSession misesion = request.getSession();
+            misesion.setAttribute("usuario", em);
+            request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+        } else {
+            request.setAttribute("error", "Usuario o contraseña incorrectos");
             request.getRequestDispatcher("index.jsp").forward(request, response);
+            
         }
+        
+    } else {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
+    
+}
+
 
        public void Salir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
            HttpSession misesion=request.getSession();
