@@ -5,6 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    HttpSession misesion = request.getSession();
+    if(misesion.getAttribute("usuario")==null){
+    response.sendRedirect("index.jsp");
+    }else{
+    
+    
+    %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,16 +39,16 @@
                             <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Producto" target="myFrame">Producto</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Producto&accion=Listar" target="myFrame">Producto</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Cliente" target="myFrame">Clientes</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=Cliente&accion=Listar" target="myFrame">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=NuevaVenta" target="myFrame">Nueva Venta</a>
+                            <a class="btn btn-outline-light" style="margin-left: 10px; border: none;" href="Controlador?menu=NuevaVenta&accion=default"  target="myFrame">Nueva Venta</a>
                         </li>
                     </ul>
                 </div>
@@ -70,3 +79,4 @@
         crossorigin="anonymous"></script>
     </body>
 </html>
+<% } %>

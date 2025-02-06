@@ -26,7 +26,7 @@ public class EmpleadoDAO {
 
     public Empleado validar(String user, String dni) {
         Empleado em = new Empleado();
-        String sql = "SELECT * FROM empleado WHERE User=? AND Dni=?";
+        String sql = "select * from empleado WHERE User=? AND Dni=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -39,7 +39,8 @@ public class EmpleadoDAO {
                 em.setDni(rs.getString("Dni"));
                 em.setNom(rs.getString("Nombres"));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("error al validar empleado: "+e.getMessage());
         }
         return em;
     }
@@ -48,7 +49,7 @@ public class EmpleadoDAO {
    
     public List listar() {
     String sql = "SELECT * FROM empleado";
-    List<Empleado> lista = new ArrayList<>();
+    List lista = new ArrayList<>();
     try {
           con = cn.Conexion();
           ps = con.prepareStatement(sql);
@@ -64,6 +65,7 @@ public class EmpleadoDAO {
                 lista.add(em);
             }
       }catch (SQLException e) {
+          System.out.println("error al listar empleado: "+e.getMessage());
         }
       return lista;
     }
@@ -80,6 +82,7 @@ public class EmpleadoDAO {
             ps.setString(5, em.getUser());
             ps.executeUpdate();
         } catch (SQLException e) {
+        System.out.println("error al agregar empleado: "+e.getMessage());
         }
         return r;
     }
@@ -98,7 +101,8 @@ public class EmpleadoDAO {
                 emp.setEstado(rs.getString(5));
                 emp.setUser(rs.getString(6));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("error al listarid empleado: "+e.getMessage());
         }
         return emp;
     }
@@ -116,6 +120,7 @@ public class EmpleadoDAO {
             ps.setInt(6, em.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("error al actualizar empleado: "+e.getMessage());
         }
         return r;
     }
@@ -126,6 +131,7 @@ public class EmpleadoDAO {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("error al borrar empleado: "+e.getMessage());
         }
     }
     
