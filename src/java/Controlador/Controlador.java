@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Controlador extends HttpServlet {
-    
+
     Empleado em = new Empleado();
     EmpleadoDAO edao = new EmpleadoDAO();
     Cliente c = new Cliente();
@@ -30,26 +30,26 @@ public class Controlador extends HttpServlet {
     int ide;
     int idc;
     int idp;
-    Venta v=new Venta();
-    List<Venta>lista=new ArrayList<>();
+    Venta v = new Venta();
+    List<Venta> lista = new ArrayList<>();
     int item;
     int cod;
     String descripcion;
     double precio;
     int cant;
-    double subtotal;  
+    double subtotal;
     double totalPagar;
-    VentaDao vdao=new VentaDao();
+    VentaDao vdao = new VentaDao();
     String numeroserie = "";
-    java.util.Date ahora = new java.util.Date(); 
+    java.util.Date ahora = new java.util.Date();
     SimpleDateFormat formateador = new SimpleDateFormat("yyyy/MM/dd");
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         Empleado usuario = (Empleado) request.getAttribute("usuario");
-        
+
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         }
@@ -91,6 +91,7 @@ public class Controlador extends HttpServlet {
                     String user1 = request.getParameter("txtUser");
                     String mail1 = request.getParameter("txtCorreo");
                     String clave1 = request.getParameter("txtClave");
+
                     em.setDni(dni1);
                     em.setNom(nom1);
                     em.setTel(tel1);
@@ -98,7 +99,12 @@ public class Controlador extends HttpServlet {
                     em.setUser(user1);
                     em.setId(ide);
                     em.setCorreo(mail1);
-                    em.setCorreo(clave1);
+                    //em.setClave(Seguridad.miHash(clave1));
+                    if (clave1 == null || clave1.isEmpty()) {
+                        em.setClave(em.getClave()); // Mantiene la contraseña actual
+                    } else {
+                        em.setClave(Seguridad.miHash(clave1)); // Encripta la nueva contraseña
+                    }
                     edao.actualizar(em);
                     request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
                     break;
@@ -111,9 +117,9 @@ public class Controlador extends HttpServlet {
                     throw new AssertionError();
             }
             System.out.println("Redirecciona a Empleado jsp");
-             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
+            request.getRequestDispatcher("Empleado.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Cliente")) {
             switch (accion) {
                 case "Listar":
@@ -121,7 +127,7 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("clientes", lista);
                     break;
                 case "Agregar":
-                    String dni = request.getParameter("txtDni");      
+                    String dni = request.getParameter("txtDni");
                     String nom = request.getParameter("txtNombres");
                     String tel = request.getParameter("txtTel");
                     String est = request.getParameter("txtEstado");
@@ -161,7 +167,7 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("Producto")) {
             switch (accion) {
                 case "Listar":
@@ -204,35 +210,35 @@ public class Controlador extends HttpServlet {
                     pdao.delete(idp);
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
-                default:                    
+                default:
                     throw new AssertionError();
             }
             System.out.println("Redirecciona a produco jsp");
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
         }
-        
+
         if (menu.equals("NuevaVenta")) {
             switch (accion) {
                 case "BuscarCliente":
                     String dni = request.getParameter("codigocliente");
                     c.setDni(dni);
-                    c=cdao.Buscar(dni);
+                    c = cdao.Buscar(dni);
                     request.setAttribute("c", c);
                     request.setAttribute("nserie", numeroserie);
                     request.setAttribute("usuario", usuario);
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
                     break;
                 case "BuscarProducto":
-                    int id=Integer.parseInt(request.getParameter("codigoproducto"));
-                    p=pdao.listarId(id);
+                    int id = Integer.parseInt(request.getParameter("codigoproducto"));
+                    p = pdao.listarId(id);
                     request.setAttribute("c", c);
                     request.setAttribute("producto", p);
                     request.setAttribute("lista", lista);
                     request.setAttribute("totalpagar", totalPagar);
                     request.setAttribute("nserie", numeroserie);
                     request.setAttribute("usuario", usuario);
-                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);         
-                    break;   
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+                    break;
                 case "Agregar":
                     request.setAttribute("nserie", numeroserie);
                     request.setAttribute("c", c);
@@ -291,55 +297,55 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("lista", lista);
                     request.setAttribute("usuario", usuario);
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
-                                      
+
                     break;
-                    
+
                 case "Editar":
                     String idParam = request.getParameter("id");
                     if (idParam != null && !idParam.isEmpty()) {
-                    int idEditar = Integer.parseInt(idParam);
+                        int idEditar = Integer.parseInt(idParam);
 
-        // Buscar la venta en la lista temporal
-                    Venta ventaEditar = lista.stream()
-                    .filter(v -> v.getIdproducto() == idEditar)
-                    .findFirst()
-                    .orElse(null);
+                        // Buscar la venta en la lista temporal
+                        Venta ventaEditar = lista.stream()
+                                .filter(v -> v.getIdproducto() == idEditar)
+                                .findFirst()
+                                .orElse(null);
 
-        if (ventaEditar != null) {
-            request.setAttribute("ventaEditar", ventaEditar);
-        }
-    }
-
-    // Mantener la lista en la vista
-    request.setAttribute("lista", lista);
-    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
-    break;
-  
-                case "updateCant":
-                    try {
-                    int idpc = Integer.parseInt(request.getParameter("id"));
-                    int canti = Integer.parseInt(request.getParameter("cantidad"));
-                    if (idpc != 0 && canti != 0) {
-                        for (int i = 0; i < lista.size(); i++) {
-                            if (lista.get(i).getIdproducto().equals(idpc)) {
-                                lista.get(i).setCantidad(canti);
-                            }
+                        if (ventaEditar != null) {
+                            request.setAttribute("ventaEditar", ventaEditar);
                         }
                     }
-                    totalPagar = 0.0;
-                    for (int i = 0; i < lista.size(); i++) {
-                        totalPagar = totalPagar + lista.get(i).getSubtotal();
+
+                    // Mantener la lista en la vista
+                    request.setAttribute("lista", lista);
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+                    break;
+
+                case "updateCant":
+                    try {
+                        int idpc = Integer.parseInt(request.getParameter("id"));
+                        int canti = Integer.parseInt(request.getParameter("cantidad"));
+                        if (idpc != 0 && canti != 0) {
+                            for (int i = 0; i < lista.size(); i++) {
+                                if (lista.get(i).getIdproducto().equals(idpc)) {
+                                    lista.get(i).setCantidad(canti);
+                                }
+                            }
+                        }
+                        totalPagar = 0.0;
+                        for (int i = 0; i < lista.size(); i++) {
+                            totalPagar = totalPagar + lista.get(i).getSubtotal();
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error:" + e);
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("Error:" + e);
-                }
-                request.setAttribute("nserie", numeroserie);
-                request.setAttribute("c", c);
-                request.setAttribute("totalpagar", totalPagar);
-                request.setAttribute("lista", lista);
-                request.setAttribute("usuario", usuario);
-                request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
-                break;
+                    request.setAttribute("nserie", numeroserie);
+                    request.setAttribute("c", c);
+                    request.setAttribute("totalpagar", totalPagar);
+                    request.setAttribute("lista", lista);
+                    request.setAttribute("usuario", usuario);
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+                    break;
                 case "GenerarVenta":
                     //Actualizacion del Stock
                     for (int i = 0; i < lista.size(); i++) {
@@ -389,7 +395,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
             }
             request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
-        }    
+        }
     }
 
     @Override
