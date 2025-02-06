@@ -38,8 +38,9 @@ public class Validar extends HttpServlet {
         String accion=request.getParameter("accion");
         if(accion.equalsIgnoreCase("Ingresar")){
             String user=request.getParameter("txtuser");
-            String pass=request.getParameter("txtpass");
-            em=edao.validar(user, pass);
+            String clave= Seguridad.miHash(request.getParameter("txtclave"));
+                    
+            em=edao.validar(user, clave);
             if(em.getUser()!=null){
                 //request.setAttribute("usuario", em);
                 HttpSession misesion=request.getSession();
@@ -48,10 +49,14 @@ public class Validar extends HttpServlet {
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+                    System.out.println("Clave ingresada (hash): " + clave);
+System.out.println("Clave almacenada en BD: " + em.getClave());
         }
         else{
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+
+
     }
 
        public void Salir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

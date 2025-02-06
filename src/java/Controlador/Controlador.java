@@ -66,12 +66,14 @@ public class Controlador extends HttpServlet {
                     String est = request.getParameter("txtEstado");
                     String user = request.getParameter("txtUser");
                     String mail = request.getParameter("txtCorreo");
+                    String clave = request.getParameter("txtClave");
                     em.setDni(dni);
                     em.setNom(nom);
                     em.setTel(tel);
                     em.setEstado(est);
                     em.setUser(user);
                     em.setCorreo(mail);
+                    em.setClave(clave);
                     edao.agregar(em);
                     request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
                     break;
@@ -88,6 +90,7 @@ public class Controlador extends HttpServlet {
                     String est1 = request.getParameter("txtEstado");
                     String user1 = request.getParameter("txtUser");
                     String mail1 = request.getParameter("txtCorreo");
+                    String clave1 = request.getParameter("txtClave");
                     em.setDni(dni1);
                     em.setNom(nom1);
                     em.setTel(tel1);
@@ -95,6 +98,7 @@ public class Controlador extends HttpServlet {
                     em.setUser(user1);
                     em.setId(ide);
                     em.setCorreo(mail1);
+                    em.setCorreo(clave1);
                     edao.actualizar(em);
                     request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
                     break;

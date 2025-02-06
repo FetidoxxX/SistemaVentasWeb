@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="txtpass" class="form-label">Password:</label>
-                        <input type="password" id="txtpass" name="txtpass" class="form-control">
+                        <input type="password" id="txtclave" name="txtclave" class="form-control">
                     </div>
                     <button type="submit" name="accion" value="ingresar" class="btn btn-primary w-100">Ingresar</button>
                 </form>

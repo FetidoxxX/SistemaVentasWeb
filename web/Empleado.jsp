@@ -57,6 +57,10 @@
                                 <label>Correo</label>
                                 <input type="text" value="${empleado.getCorreo()}" name="txtCorreo" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <label>Clave</label>
+                                <input type="text" value="${empleado.getClave()}" name="txtClave" class="form-control">
+                            </div>
                             
                             <div class="text-center">
                                 <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
@@ -77,6 +81,7 @@
                                     <th>ESTADO</th>
                                     <th>USER</th>
                                     <th>CORREO</th>
+                                    <th>CLAVE</th>
                                     <th>ACCIONES</th>
                                 </tr>
                             </thead>
@@ -90,6 +95,7 @@
                                     <td>${em.estado}</td>
                                     <td>${em.user}</td>
                                     <td>${em.correo}</td>
+                                    <td>${em.clave}</td>
                                     <td>
                                         <a class="btn btn-warning" href="Controlador?menu=Empleado&accion=Editar&id=${em.id}">Editar</a>
                                         <a class="btn btn-danger" href="Controlador?menu=Empleado&accion=Delete&id=${em.id}">Eliminar</a>

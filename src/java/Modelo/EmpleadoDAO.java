@@ -24,19 +24,19 @@ public class EmpleadoDAO {
     ResultSet rs;
     int r;
 
-    public Empleado validar(String user, String dni) {
+    public Empleado validar(String user, String clave) {
         Empleado em = new Empleado();
-        String sql = "select * from empleado WHERE User=? AND Dni=?";
+        String sql = "select * from empleado WHERE User=? AND Clave=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, user);
-            ps.setString(2, dni);
+            ps.setString(2, clave);
             rs = ps.executeQuery();
             while (rs.next()) {
                 em.setId(rs.getInt("IdEmpleado"));
                 em.setUser(rs.getString("User"));
-                em.setDni(rs.getString("Dni"));
+                em.setClave(rs.getString("Clave"));
                 em.setNom(rs.getString("Nombres"));
             }
         } catch (SQLException e) {
@@ -63,6 +63,7 @@ public class EmpleadoDAO {
                 em.setEstado(rs.getString(5));
                 em.setUser(rs.getString(6));
                 em.setCorreo(rs.getString(7));
+                em.setClave(rs.getString(8));
                 lista.add(em);
             }
       }catch (SQLException e) {
@@ -72,7 +73,7 @@ public class EmpleadoDAO {
     }
 
     public int agregar(Empleado em){ 
-       String sql = "insert into empleado(Dni, Nombres, Telefono,Estado,User)values(?,?,?,?,?)";
+       String sql = "insert into empleado(Dni, Nombres, Telefono,Estado,User,Correo,Clave)values(?,?,?,?,?,?,?)";
       try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -82,6 +83,7 @@ public class EmpleadoDAO {
             ps.setString(4, em.getEstado());
             ps.setString(5, em.getUser());
             ps.setString(6, em.getCorreo());
+            ps.setString(7, em.getClave());
             ps.executeUpdate();
         } catch (SQLException e) {
         System.out.println("error al agregar empleado: "+e.getMessage());
@@ -103,6 +105,7 @@ public class EmpleadoDAO {
                 emp.setEstado(rs.getString(5));
                 emp.setUser(rs.getString(6));
                 emp.setCorreo(rs.getString(7));
+                emp.setClave(rs.getString(8));
             }
         } catch (SQLException e) {
             System.out.println("error al listarid empleado: "+e.getMessage());
@@ -111,7 +114,7 @@ public class EmpleadoDAO {
     }
     
     public int actualizar(Empleado em) {
-        String sql = "update empleado set Dni=?, Nombres=?, Telefono=?,Estado=?,User=? where IdEmpleado=?";
+        String sql = "update empleado set Dni=?, Nombres=?, Telefono=?,Estado=?,User=?,Correo=?,Clave=? where IdEmpleado=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -120,8 +123,10 @@ public class EmpleadoDAO {
             ps.setString(3, em.getTel());
             ps.setString(4, em.getEstado());
             ps.setString(5, em.getUser());
-            ps.setInt(6, em.getId());
-            ps.setString(7, em.getCorreo());
+            ps.setString(6, em.getCorreo());
+            ps.setString(7, em.getClave());
+            ps.setInt(8, em.getId());
+            
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error al actualizar empleado: "+e.getMessage());

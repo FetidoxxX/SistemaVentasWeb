@@ -16,11 +16,12 @@ public class Empleado {
     String estado;
     String user;
     String correo;
+    String clave;
 
     public Empleado() {
     }
 
-    public Empleado(int id, String dni, String nom, String tel, String estado, String user, String correo, String permiso) {
+    public Empleado(int id, String dni, String nom, String tel, String estado, String user, String correo, String clave) {
         this.id = id;
         this.dni = dni;
         this.nom = nom;
@@ -85,6 +86,15 @@ public class Empleado {
     public void setCorreo(String mail) {
         this.correo = mail;
     }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
 
     
 }
