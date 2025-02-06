@@ -81,7 +81,6 @@
                                     <th>ESTADO</th>
                                     <th>USER</th>
                                     <th>CORREO</th>
-                                    <th>CLAVE</th>
                                     <th>ACCIONES</th>
                                 </tr>
                             </thead>
@@ -95,7 +94,6 @@
                                     <td>${em.estado}</td>
                                     <td>${em.user}</td>
                                     <td>${em.correo}</td>
-                                    <td>${em.clave}</td>
                                     <td>
                                         <a class="btn btn-warning" href="Controlador?menu=Empleado&accion=Editar&id=${em.id}">Editar</a>
                                         <a class="btn btn-danger" href="Controlador?menu=Empleado&accion=Delete&id=${em.id}">Eliminar</a>
