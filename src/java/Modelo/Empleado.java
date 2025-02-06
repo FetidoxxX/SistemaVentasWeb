@@ -15,19 +15,19 @@ public class Empleado {
     String tel;
     String estado;
     String user;
-    String mail;
+    String correo;
 
     public Empleado() {
     }
 
-    public Empleado(int id, String dni, String nom, String tel, String estado, String user, String mail, String permiso) {
+    public Empleado(int id, String dni, String nom, String tel, String estado, String user, String correo, String permiso) {
         this.id = id;
         this.dni = dni;
         this.nom = nom;
         this.tel = tel;
         this.estado = estado;
         this.user = user;
-        this.mail = mail;
+        this.correo = correo;
     }
 
     public int getId() {
@@ -78,12 +78,12 @@ public class Empleado {
         this.user = user;
     }
     
-    public String getMail() {
-        return mail;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setCorreo(String mail) {
+        this.correo = mail;
     }
 
     
