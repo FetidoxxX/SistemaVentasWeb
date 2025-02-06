@@ -29,6 +29,7 @@ public class Empleado {
         this.estado = estado;
         this.user = user;
         this.correo = correo;
+        this.clave = clave;
     }
 
     public int getId() {
