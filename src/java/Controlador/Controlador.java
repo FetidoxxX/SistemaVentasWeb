@@ -282,7 +282,7 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("totalpagar", totalPagar);
                     request.setAttribute("lista", lista);
                     request.setAttribute("usuario", usuario);
-                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+                    //request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
                     break;
                 case "updateCant":
                     try {

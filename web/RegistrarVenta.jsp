@@ -115,9 +115,8 @@
                                         <td>${list.getPrecio()}</td>
                                         <td>${list.getCantidad()}</td>
                                         <td>${list.getSubtotal()}</td>
-                                        <td class="d-flex">
-                                            <a href="#" class="btn btn-warning">Editar</a>
-                                            <a href="#" class="btn btn-danger" style="margin-left: 5px">Delete</a>
+                                        <td>
+                                            <a href="Controlador?menu=NuevaVenta&accion=Delete&id=${list.getId()}" class="btn btn-danger" style="margin-right: 5px">Delete</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
