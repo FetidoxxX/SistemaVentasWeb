@@ -82,7 +82,7 @@ public class EmpleadoDAO {
             ps.setString(4, em.getEstado());
             ps.setString(5, em.getUser());
             ps.setString(6, em.getCorreo());
-            ps.setString(7, Seguridad.miHash(em.getClave()));  // Aquí debes hashear la contraseña
+            ps.setString(7, Seguridad.miHash(em.getClave()));  // hashear la contraseña
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error al agregar empleado: " + e.getMessage());
@@ -125,8 +125,7 @@ public class EmpleadoDAO {
             ps.setString(6, em.getCorreo());
             //ps.setString(7, em.getClave()); // Encriptar contraseña
             ps.setInt(7, em.getId());
-
-            r = ps.executeUpdate(); // Asignar el número de filas afectadas
+            r = ps.executeUpdate(); 
         } catch (SQLException e) {
             System.out.println("error al actualizar empleado: " + e.getMessage());
         }

@@ -59,7 +59,7 @@
                     <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
                         <li>
                             <a class="dropdown-item text-center" href="#">
-                                <img src="img/user.webp" alt="User" width="60">
+                                <img src="img/user.png" alt="User" width="60">
                             </a>
                         </li>
                         <li><a class="dropdown-item text-center" href="#">${usuario.getUser()}</a></li>
