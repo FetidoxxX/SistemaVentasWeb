@@ -1,0 +1,34 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 6/02/2025, 1:05:58 a. m.
+    Author     : USER
+*/
+
+
+.bienvenida-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('img/bienvenida.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+.bienvenida-container {
+    text-align: center;
+    padding: 20px;
+    background-color: brown;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.bienvenida-container h1 {
+    font-size: 3rem;
+    color: burlywood;
+}
+.bienvenida-container p {
+    font-size: 1.2rem;
+    color: #dee2e6;
+}

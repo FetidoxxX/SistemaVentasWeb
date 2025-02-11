@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesP.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
           rel="stylesheet" 
@@ -25,8 +25,8 @@
             <div class="card-body">
                 <form class="form-sing" action="Validar" method="POST">
                     <div class="form-group text-center mb-4">
-                        <h3 class="mb-3">Login</h3>
-                        <img src="img/logo.png" alt="Logo" class="img-fluid" style="max-width: 170px;">
+                        <h3 class="mb-3">Iniciar Sesion</h3>
+                        <img src="img/Logo.png" alt="Logo" class="img-fluid" style="max-width: 170px;">
                         <p class="text-muted">Bienvenidos al Sistema</p>
                     </div>
                     <div class="form-group mb-3">
@@ -37,7 +37,7 @@
                         <label for="txtpass" class="form-label">Password:</label>
                         <input type="password" id="txtclave" name="txtclave" class="form-control">
                     </div>
-                    <button type="submit" name="accion" value="ingresar" class="btn btn-primary w-100">Ingresar</button>
+                    <button type="submit" name="accion" value="ingresar" class="btn btn-warning w-100">Ingresar</button>
                 </form>
             </div>
         </div>

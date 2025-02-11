@@ -22,6 +22,7 @@
               rel="stylesheet" 
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
               crossorigin="anonymous">
+        <link rel="stylesheet" href="stylesC.css"/>
         <title>JSP Page</title>
     </head>
     <body>

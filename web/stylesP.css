@@ -1,0 +1,206 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 10/02/2025, 10:09:00 p. m.
+    Author     : USER
+*/
+
+/* Reset básico y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: linear-gradient(135deg, #caa945 0%, #a83232 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container principal */
+.container-fluid {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Columnas */
+.col-sm-4 {
+    flex: 0 0 30%;
+}
+
+.col-sm-8 {
+    flex: 0 0 70%;
+}
+
+/* Tarjetas */
+.card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #8b1a1a;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #caa945;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #a83232;
+    box-shadow: 0 0 0 0.2rem rgba(168, 50, 50, 0.25);
+    outline: none;
+}
+
+/* Tabla */
+.table-container {
+    flex: 1;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: #8b1a1a;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 15px 12px;
+}
+
+.table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    border-color: #caa945;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(139, 26, 26, 0.1);
+}
+
+/* Botones */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #a83232;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #8b1a1a;
+}
+
+.btn-success {
+    background: #932020;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #8b1a1a;
+}
+
+.btn-warning {
+    background: #caa945;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: #b89540;
+}
+
+.btn-danger {
+    background: #b83232;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #a83232;
+}
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+    background: #a83232;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #8b1a1a;
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .col-sm-4, .col-sm-8 {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .card {
+        min-height: auto;
+    }
+}

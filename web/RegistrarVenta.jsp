@@ -19,6 +19,7 @@
         <title>Registrar Venta</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
               rel="stylesheet" crossorigin="anonymous">
+        <link rel="stylesheet" href="stylesV.css"/>
         <style>
             @media print {
                 body * {
@@ -96,7 +97,7 @@
 
                             <div class="row mb-2">
                                 <div class="col-md-4">
-                                    <input type="text" name="precio" value="${producto.getPre()}" class="form-control" placeholder="$/.0.00">
+                                    <input type="text" name="precio" value="${producto.getPre()}" class="form-control" placeholder="$/0.00">
                                 </div>
                                 <div class="col-md-4">
                                     <input type="number" name="cant" value="1" class="form-control">
@@ -140,11 +141,7 @@
                                         <td>${list.getIdproducto()}</td>
                                         <td>${list.getDescripcionP()}</td>
                                         <td>${list.getPrecio()}</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-danger" onclick="cambiarCantidad(this, -1)">−</button>
-                                            <input type="number" class="cantidad" value="${list.getCantidad()}" min="1" data-precio="${list.getPrecio()}" oninput="updateSubtotal(this)">
-                                            <button class="btn btn-sm btn-success" onclick="cambiarCantidad(this, 1)">+</button>
-                                        </td>
+                                        <td> ${list.getCantidad()} </td>
                                         <td class="subtotal">${list.getSubtotal()}</td>
                                         <td>
                                             <a href="Controlador?menu=NuevaVenta&accion=delete&idp=${list.getIdproducto()}" class="btn btn-danger" style="margin-left: 5px">Delete</a>
@@ -153,7 +150,7 @@
                                 </c:forEach>
                             </tbody>
                         </table>
-                         <h4 class="total">Total a Pagar: S/.<span id="total">${totalpagar}</span></h4>
+                         <h4 class="total">Total a Pagar: $/<span id="total">${totalpagar}</span></h4>
                     </div>
                 </div>
             </div>
@@ -168,32 +165,5 @@
             </div>
         </div>
     </body>
-    <script>
-    function cambiarCantidad(button, change) {
-        let input = button.parentElement.querySelector(".cantidad");
-        let newValue = parseInt(input.value) + change;
-        if (newValue >= 1) {
-            input.value = newValue;
-            updateSubtotal(input);
-        }
-    }
-
-    function actualizarSubtotal(input) {
-        let precio = parseFloat(input.dataset.precio);
-        let cantidad = parseInt(input.value);
-        let subtotal = precio * cantidad;
-        let row = input.closest("tr");
-        row.querySelector(".subtotal").innerText = subtotal.toFixed(2);
-        updateTotal();
-    }
-
-    function actualizarTotal() {
-        let total = 0;
-        document.querySelectorAll(".subtotal").forEach(cell => {
-            total += parseFloat(cell.innerText);
-        });
-        document.getElementById("total").innerText = total.toFixed(2);
-    }
-</script>
 </html>
 <% } %>

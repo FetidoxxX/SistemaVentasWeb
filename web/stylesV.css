@@ -1,0 +1,82 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 10/02/2025, 10:10:17 p. m.
+    Author     : USER
+*/
+
+body {
+    background: linear-gradient(135deg, #caa945 0%, #a83232 100%);
+    color: #800000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    margin-top: 20px;
+    flex: 1; /* Permite que el contenido principal ocupe el espacio necesario */
+}
+
+/* Tarjetas y factura */
+.card, .factura {
+    background-color: #fff;
+    border: 2px solid #800000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(128, 0, 0, 0.3);
+    padding: 20px;
+}
+
+/* Estilos de los botones */
+.btn-success, .btn-danger {
+    background-color: #800000;
+    border-color: #800000;
+    color: #ffd700;
+    margin: 0;  /* Elimina márgenes */
+    padding: 12px 20px; /* Ajusta el espacio interno */
+    display: block;
+    width: 100%; /* Asegura que ocupen todo el ancho */
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-success:hover {
+    background-color: #ffd700;
+    color: #800000;
+}
+
+.btn-danger {
+    background-color: #b22222;
+    border-color: #b22222;
+}
+
+.btn-danger:hover {
+    background-color: #ff0000;
+}
+
+/* Contenedor de botones para evitar separación */
+.button-container {
+    display: flex;
+    gap: 10px; /* Espaciado entre botones */
+    justify-content: center;
+    width: 100%;
+    margin: 0; /* Elimina cualquier margen exterior */
+    padding: 0; /* Elimina cualquier relleno extra */
+}
+
+/* Pie de página */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #800000;
+    color: #ffd700;
+    margin: 0; /* Elimina separación con los botones */
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
