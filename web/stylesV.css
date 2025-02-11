@@ -1,0 +1,84 @@
+body {
+    background: linear-gradient(135deg, #caa945 0%, #a83232 100%);
+    color: #800000;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    
+    border: 2px solid #800000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(128, 0, 0, 0.3);
+}
+
+.btn-outline-info {
+    color: #800000;
+    border-color: #800000;
+}
+
+.btn-outline-info:hover {
+    background-color: #800000;
+    color: #ffd700;
+}
+
+.btn-outline-primary {
+    background-color: #800000;
+    border-color: #800000;
+    color: #ffd700;
+}
+
+.btn-outline-primary:hover {
+    background-color: #ffd700;
+    color: #800000;
+}
+
+.btn-success {
+    background-color: #800000;
+    border-color: #800000;
+    color: #ffd700;
+}
+
+.btn-success:hover {
+    background-color: #ffd700;
+    color: #800000;
+}
+
+.btn-danger {
+    background-color: #b22222;
+    border-color: #b22222;
+}
+
+.btn-danger:hover {
+    background-color: #ff0000;
+}
+
+.factura {
+    border: 2px solid #800000;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(128, 0, 0, 0.3);
+}
+
+.factura h2, .factura h4 {
+    color: #800000;
+    text-align: center;
+}
+
+.table thead {
+    background-color: #800000;
+    color: #ffd700;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #800000;
+    color: #ffd700;
+    margin-top: 20px;
+}

@@ -282,11 +282,11 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("usuario", usuario);
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
                     break;
-                case "delete": 
-                    System.out.println("ingreso a borrar producto venta" + request.getParameter("idp")); 
+                case "delete":
+                    System.out.println("ingreso a borrar producto venta" + request.getParameter("idp"));
                     int idpd = Integer.parseInt((String) request.getParameter("idp"));
                     for (int i = 0; i < lista.size(); i++) {
-                        if (lista.get(i).getIdproducto()==idpd) {
+                        if (lista.get(i).getIdproducto() == idpd) {
                             lista.remove(i);
                             System.out.println("Se elimino articulo a la venta");
                         }
@@ -314,27 +314,27 @@ public class Controlador extends HttpServlet {
                         aO.actualizarstock(idproducto, sac);
                     }
                     //Guardar Venta
-                    v.setIdcliente(c.getId());
-                    v.setIdempelado(2);
-                    v.setNumserie(numeroserie);
-                    v.setFecha(formateador.format(ahora));
-                    v.setMonto(totalPagar);
-                    v.setEstado("1");
-                    vdao.guardarVenta(v);
-                    //Guardar Detalle ventas
-                    int idv = Integer.parseInt(vdao.IdVentas());
-                    for (int i = 0; i < lista.size(); i++) {
-                        v = new Venta();
-                        v.setId(idv);
-                        v.setIdproducto(lista.get(i).getIdproducto());
-                        v.setCantidad(lista.get(i).getCantidad());
-                        v.setPrecio(lista.get(i).getPrecio());
-                        vdao.guardarDetalleventas(v);
-                        request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+                    String idVentasStr = vdao.IdVentas();
+
+                    if (idVentasStr != null && !idVentasStr.isEmpty()) {
+                        try {
+                            int idv = Integer.parseInt(idVentasStr);
+                            for (int i = 0; i < lista.size(); i++) {
+                                v = new Venta();
+                                v.setId(idv);
+                                v.setIdproducto(lista.get(i).getIdproducto());
+                                v.setCantidad(lista.get(i).getCantidad());
+                                v.setPrecio(lista.get(i).getPrecio());
+                                vdao.guardarDetalleventas(v);
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Error al convertir IdVentas: " + idVentasStr);
+                        }
+                    } else {
+                        System.out.println("Error: IdVentas() devolvió null o una cadena vacía.");
                     }
-                    break;
-                    case "cancelar":
-                        request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+                case "cancelar":
+                    request.getRequestDispatcher("Principal.jsp").forward(request, response);
                     break;
                 default:
                     v = new Venta();
@@ -354,9 +354,9 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("usuario", usuario);
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
             }
-           //request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+            //request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
         }
-        
+
     }
 
     @Override

@@ -1,0 +1,203 @@
+/* ======== Estilos Generales ======== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #caa945 0%, #a83232 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+}
+
+/* ======== Contenedor Principal ======== */
+.d-flex {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    align-items: flex-start;
+}
+
+/* ======== Columnas (Tamaños Ajustados) ======== */
+.col-sm-4 {
+    flex: 0 0 23%; /* Reduce el tamaño de la tabla izquierda */
+}
+
+.col-sm-8 {
+    flex: 0 0 75%;
+}
+
+/* ======== Tarjetas (Formulario y Tablas) ======== */
+.card {
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 100%; /* Ajuste para evitar crecimiento excesivo */
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-body {
+    padding: 15px;
+}
+
+/* ======== Formularios (Tamaño Ajustado) ======== */
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: 600;
+    color: #8b1a1a;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 2px solid #caa945;
+    padding: 8px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    border-color: #a83232;
+    outline: none;
+    box-shadow: 0 0 8px rgba(168, 50, 50, 0.3);
+}
+
+/* ======== Tablas (Ahora se muestran completamente sin scroll) ======== */
+.table-container {
+    flex: 1;
+    max-height: none; /* Elimina el límite de altura */
+    overflow: hidden;
+}
+
+/* Ajustes específicos para cada tabla */
+.col-sm-4 .table-container {
+    max-height: 220px; /* Reduce la tabla izquierda */
+}
+
+.col-sm-8 .table-container {
+    max-height: 270px; /* Reduce la tabla derecha */
+}
+
+/* ======== Tabla ======== */
+.table {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: #a83232;
+    color: white;
+    padding: 8px; /* Reduce el espacio en la cabecera */
+    font-size: 13px;
+}
+
+.table tbody td {
+    padding: 6px; /* Reduce el padding para hacer la tabla más compacta */
+    vertical-align: middle;
+    border-bottom: 1px solid #caa945;
+    font-size: 13px;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(168, 50, 50, 0.05);
+}
+
+/* ======== Botones (Más Compactos) ======== */
+.btn {
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    margin-right: 5px;
+}
+
+.btn-primary {
+    background: #a83232;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #8b1a1a;
+}
+
+.btn-warning {
+    background: #caa945;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: #b89540;
+}
+
+.btn-danger {
+    background: #b83232;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background: #a83232;
+}
+
+/* ======== Scrollbar Personalizada ======== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a83232;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b1a1a;
+}
+
+/* ======== Responsividad (Mejorada para móviles) ======== */
+@media (max-width: 768px) {
+    .d-flex {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .col-sm-4, .col-sm-8 {
+        flex: none;
+        width: 100%;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .table-container {
+        max-height: none; /* Permite que la tabla se ajuste completamente */
+    }
+}

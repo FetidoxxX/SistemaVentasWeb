@@ -19,47 +19,8 @@
         <title>Registrar Venta</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
               rel="stylesheet" crossorigin="anonymous">
-        <style>
-            @media print {
-                body * {
-                    visibility: hidden;
-                    background-color: #f8f9fa;
-                }
-                .factura, .factura * {
-                    visibility: visible;
-                }
-                .factura {
-                    border: 2px solid #000;
-                    padding: 20px;
-                    background: #fff;
-                    border-radius: 10px;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    border: 2px solid #000;
-                    max-width: 600px;
-                }
-                .btn, .parte01, .accion {
-                    display: none;
-                }
-                .container {
-                    margin-top: 20px;
-                }
+           <link rel="stylesheet" href="stylesV.css">
 
-                .factura h2, .factura h4 {
-                    text-align: center;
-
-                }
-                .total {
-                    font-size: 20px;
-                    font-weight: bold;
-                    text-align: right;
-                }
-
-            }
-        </style>
     </head>
     <body>
         <div class="container">
@@ -168,6 +129,10 @@
             </div>
         </div>
     </body>
+    <footer class="footer">
+    <p>&copy; 2025 VentaUD. Todos los derechos reservados.</p>
+</footer>
+
     <script>
     function cambiarCantidad(button, change) {
         let input = button.parentElement.querySelector(".cantidad");
