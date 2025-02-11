@@ -27,7 +27,7 @@
     </head>
     <body class="bienvenida-body">
         <div class="bienvenida-container">
-            <p>Selecciona una opción para comenzar.</p>
+            <h1>Selecciona una opción para comenzar.</h1>
         </div>
     </body>
 </html>
